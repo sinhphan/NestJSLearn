@@ -7,6 +7,7 @@ import { AttributeItemsModule } from './modules/attribute-items/attribute-items.
 import { SpecItemsModule } from './modules/spec-items/spec-items.module';
 import { AttributeSpecItemsModule } from './modules/attribute-spec-items/attribute-spec-items.module';
 import { PromotionItemsModule } from './modules/promotion-items/promotion-items.module';
+import { join } from 'path';
 
 @Module({
   imports: [
@@ -17,7 +18,9 @@ import { PromotionItemsModule } from './modules/promotion-items/promotion-items.
       username: 'sinh',
       password: 'SinhLAa3@',
       database: 'fpt_shop',
-      entities: [],
+      entities: [join(__dirname, './modules/**/*.entity{.ts,.js}')],
+      migrations: [join(__dirname, './migration/*{.ts,.js}')],
+      autoLoadEntities: true,
       synchronize: true,
     }),
     ProductsModule,
